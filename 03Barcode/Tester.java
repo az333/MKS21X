@@ -1,4 +1,8 @@
 public class Tester{
+
+    // BEN WEINSTEIN'S TEST CASES
+
+    
     public static void main(String args[]){
 	//INITIAL TESTS
 	System.out.println("\nINITIAL TESTS");

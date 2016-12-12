@@ -7,14 +7,14 @@ public class Barcode implements Comparable<Barcode> {
 
     public Barcode (String zip) {
 	if (zip.length() != 5) {
-	    throw new IllegalArgumentException ();
+	    throw new IllegalArgumentException ("Zip is not the correct length");
 	}
 
 	try {
 	    int zipnum = Integer.parseInt(zip); 
 	}
 	catch (NumberFormatException e) {
-	    throw new IllegalArgumentException ();
+	    throw new IllegalArgumentException ("Zip contains a non digit");
 	}
 	_zip = zip;
 	//System.out.println ("zip: " + _zip);
@@ -96,14 +96,14 @@ public class Barcode implements Comparable<Barcode> {
 	
 	if (code.length() != 32) {
 	    throw new  IllegalArgumentException ("The length of the barcode is not 32 ");
-	}if (code.charAt(0) != '|'  && code.charAt(code.length() - 1) != '|') {
+	}if (code.charAt(0) != '|'  ||  code.charAt(code.length() - 1) != '|') {
 	    throw new IllegalArgumentException ("The left and rigthmost charcters are not '|' ");
 	}for (int i = 0; i < code.length(); i ++) {
 	    if (code.charAt(i) != '|' && code.charAt(i) != ':') {
 		throw new IllegalArgumentException ("Non-barcode characters are used");
 	    }
 	}
-		System.out.println(code);
+	//	System.out.println(code);
 	
 	//going through each "section" of the barcode loop
 	for (int i = 1; i < code.length () - 5; i += 5) {
@@ -111,7 +111,7 @@ public class Barcode implements Comparable<Barcode> {
 	    //checking for matches loop 
 	    for (int x = 0; x < bars.length; x ++) {
 		if (code.substring(i, i + 5).equals(bars[x])) {
-		     System.out.println (code.substring(i, i +5));
+		    //System.out.println (code.substring(i, i +5));
 		    break;
 		}
 		if (x == bars.length - 1) {
