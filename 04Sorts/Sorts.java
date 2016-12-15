@@ -56,16 +56,20 @@ public class Sorts{
     public static void bubbleSort (int [] data) {
 	int max = data.length; 
 	for (int i = 0; i < data.length; i ++) {
-	    int temp; 
+	    int temp;
+	    boolean swaps = false; 
 	    for (int x = 1; x < max ; x ++) {
 		if (data[x - 1] > data[x]) {
 		    temp  = data[x - 1];
 		    data[x - 1] = data[x];
 		    data[x] = temp;
-		     
-		}		
+		    swaps = true;
+		}
 	    }
-	    max --;
+	    if (swaps == false) {
+		return;
+	    }
+	    max --;    
 	}
     }
 }
