@@ -30,4 +30,25 @@ public class Sorts{
     }
 
 
+    public static void insertionSort (int [] data) {
+	// make i = 1 because first element is already sorted
+	for (int i = 1; i < data.length; i ++) {
+	    
+	    //temp number we want to move
+	    int temp = data[i];
+	    
+	    //index right before temp number 
+	    int x = i - 1;
+
+	    //starting at index right before, go down the list as long as the temp is smaller than the list item 
+	    for (; x > -1  && temp < data[x]; x --) {
+
+		//set each element to the one before  
+		data[x + 1] = data[x];		    
+	    }
+
+	    // place the temp in the correct spot 
+	    data[x + 1] = temp;
+	}
+    }
 }
